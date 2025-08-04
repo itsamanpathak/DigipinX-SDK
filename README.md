@@ -199,6 +199,7 @@ Common error codes:
 
 - **Minimum SDK**: 21 (Android 5.0)
 - **Target SDK**: 35 (Android 14)
+- **Java Version**: 17+
 - **Language**: Kotlin
 - **Geographic Scope**: India (coordinates must be within Indian bounds)
 

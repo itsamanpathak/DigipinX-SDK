@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    `maven-publish`
 }
 
 android {
@@ -27,11 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         buildConfig = true
@@ -46,4 +47,45 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                from(components["release"])
+                
+                groupId = "com.github.itsamanpathak"
+                artifactId = "digipinx-sdk"
+                version = "1.0.0"
+                
+                pom {
+                    name.set("DigipinX Android SDK")
+                    description.set("Digipin finder SDK for Android - Unofficial implementation of India Post Digipin system")
+                    url.set("https://github.com/itsamanpathak/DigipinX-SDK")
+                    
+                    licenses {
+                        license {
+                            name.set("MIT License")
+                            url.set("https://opensource.org/licenses/MIT")
+                        }
+                    }
+                    
+                    developers {
+                        developer {
+                            id.set("itsamanpathak")
+                            name.set("Aman Pathak")
+                            email.set("your-email@example.com")
+                        }
+                    }
+                    
+                    scm {
+                        connection.set("scm:git:git://github.com/itsamanpathak/DigipinX-SDK.git")
+                        developerConnection.set("scm:git:ssh://github.com/itsamanpathak/DigipinX-SDK.git")
+                        url.set("https://github.com/itsamanpathak/DigipinX-SDK")
+                    }
+                }
+            }
+        }
+    }
 }
