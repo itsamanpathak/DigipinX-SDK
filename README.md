@@ -3,7 +3,7 @@
 <div align="center">
   <img src="app/src/main/ic_launcher-playstore.png" alt="DigipinX Logo" width="120" height="120">
   <br>
-  <em>DigipinX finder SDK for Android</em>
+  <em>Digipin finder SDK for Android</em>
 </div>
 
 ## Overview
