@@ -49,41 +49,41 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("maven") {
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.github.itsamanpathak"
+            artifactId = "digipinx-sdk"
+            version = "1.0.0"
+
+            afterEvaluate {
                 from(components["release"])
-                
-                groupId = "com.github.itsamanpathak"
-                artifactId = "digipinx-sdk"
-                version = "1.0.0"
-                
-                pom {
-                    name.set("DigipinX Android SDK")
-                    description.set("Digipin finder SDK for Android - Unofficial implementation of India Post Digipin system")
+            }
+
+            pom {
+                name.set("DigipinX Android SDK")
+                description.set("Digipin finder SDK for Android - Unofficial implementation of India Post Digipin system")
+                url.set("https://github.com/itsamanpathak/DigipinX-SDK")
+
+                licenses {
+                    license {
+                        name.set("MIT License")
+                        url.set("https://opensource.org/licenses/MIT")
+                    }
+                }
+
+                developers {
+                    developer {
+                        id.set("itsamanpathak")
+                        name.set("Aman Pathak")
+                        email.set("itsamanpathak@gmail.com")
+                    }
+                }
+
+                scm {
+                    connection.set("scm:git:git://github.com/itsamanpathak/DigipinX-SDK.git")
+                    developerConnection.set("scm:git:ssh://github.com/itsamanpathak/DigipinX-SDK.git")
                     url.set("https://github.com/itsamanpathak/DigipinX-SDK")
-                    
-                    licenses {
-                        license {
-                            name.set("MIT License")
-                            url.set("https://opensource.org/licenses/MIT")
-                        }
-                    }
-                    
-                    developers {
-                        developer {
-                            id.set("itsamanpathak")
-                            name.set("Aman Pathak")
-                            email.set("your-email@example.com")
-                        }
-                    }
-                    
-                    scm {
-                        connection.set("scm:git:git://github.com/itsamanpathak/DigipinX-SDK.git")
-                        developerConnection.set("scm:git:ssh://github.com/itsamanpathak/DigipinX-SDK.git")
-                        url.set("https://github.com/itsamanpathak/DigipinX-SDK")
-                    }
                 }
             }
         }
